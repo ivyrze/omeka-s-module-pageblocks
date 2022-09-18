@@ -11,7 +11,6 @@ return [
     'block_layouts' => [
         'factories' => [
             'jumbotron-search' => Service\BlockLayout\JumbotronSearchFactory::class,
-            'media-details' => Service\BlockLayout\MediaDetailsFactory::class,
             'media-single' => Service\BlockLayout\MediaSingleFactory::class,
             'two-column' => Service\BlockLayout\TwoColumnFactory::class,
             'three-column' => Service\BlockLayout\ThreeColumnFactory::class,
@@ -32,16 +31,6 @@ return [
         'factories' => [
             'sidebar' => Service\View\Helper\SidebarViewHelperFactory::class
         ]
-    ],
-    'translator' => [
-        'translation_file_patterns' => [
-            [
-                'type' => 'gettext',
-                'base_dir' => dirname(__DIR__) . '/language',
-                'pattern' => '%s.mo',
-                'text_domain' => null,
-            ],
-        ],
     ]
 ];
 

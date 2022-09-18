@@ -1,7 +1,3 @@
-.collapse + .collapsible {
-    overflow: revert;
-}
-
 .block .attachments.topics .attachment {
     line-height: 1;
     padding: 5px 6px;

@@ -5,10 +5,10 @@ $this->headLink()->appendStylesheet($assetUrl('css/style.css', 'PageBlocks'));
 
 ?>
 
-<section class="col-container">
+<div class="col-container">
     <?php foreach ($columns as $column): ?>
         <div class="col-single">
             <?= $column ?>
         </div>
     <?php endforeach; ?>
-</section>
+</div>

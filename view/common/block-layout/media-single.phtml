@@ -5,16 +5,53 @@ $this->headLink()->appendStylesheet($assetUrl('css/style.css', 'PageBlocks'));
 
 ?>
 
-<section class="col-container col-media-container">
-    <div class="col-single">
+
+<div class="col-container">
+    <div class= "col-first">
         <?php foreach ($attachments as $attachment) {
-            echo $attachment->media()->render([
-                'hideTranscript' => true,
-                'compactMode' => true,
-            ]);
+            echo $attachment->media()->render();
+
         } ?>
     </div>
-    <div class="col-single">
-        <?= $html ?>
+    <div class = "col-second">
+        <?php foreach ($attachments as $attachment):?>
+        <?php $item = $attachment->item(); ?>
+        <h4 class="curr-title"  style ="font-size: x-large; font-family: 'Source Sans Pro', sans-serif; color : #0A0A0A; font-weight:bold; padding-bottom: 20px; padding-left :30px">
+            <?php echo $item->displayTitle(); ?>
+        </h4>
+        
+        <p class="des">
+            <?php echo $item->displayDescription(); ?>
+        </p>
+        
+        <div class="footer">
+            <?php $teacher_directions = $item->value('dcterms:identifier'); ?>
+            <?php  
+            $values = $item->value('dcterms:identifier', array('all' => true) ); 
+            $indx = 0;
+
+            foreach ($values as $v) {
+                switch ($indx) {
+                    case 0:
+                        $txt = '<a href=' . $v . ' target="_blank" class="btn">Teacher Directions</a>';
+                        $len = strlen($v);
+                        echo ($len > 5) ? $txt : '';
+                    break;
+                    case 1:
+                        $txt = '<a href=' . $v . ' target="_blank" class="btn">Slide Deck</a>';
+                        $len = strlen($v);
+                        echo ($len > 5) ? $txt : '';
+                    break;
+                    case 2:
+                        $txt = '<a href=' . $v . ' target="_blank" class="btn">Student Handouts</a>';
+                        $len = strlen($v);
+                        echo ($len > 5) ? $txt : '';
+                    break;
+                }
+                $indx = $indx + 1;
+            }
+            ?>
+        </div>
+        <?php endforeach; ?>
     </div>
-</section>
+</div>

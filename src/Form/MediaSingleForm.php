@@ -2,9 +2,9 @@
 namespace PageBlocks\Form;
 
 use Laminas\Form\Element;
-use Laminas\Form\Fieldset;
+use Laminas\Form\Form;
 
-class MediaSingleForm extends Fieldset
+class MediaSingleForm extends Form
 {
     public function init()
     {

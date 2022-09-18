@@ -2,9 +2,9 @@
 namespace PageBlocks\Form;
 
 use Laminas\Form\Element;
-use Laminas\Form\Fieldset;
+use Laminas\Form\Form;
 
-class JumbotronSearchForm extends Fieldset
+class JumbotronSearchForm extends Form
 {
     public function init()
     {

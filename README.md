@@ -14,7 +14,9 @@ The currently available blocks are:
 
 Use the zipped releases provided on GitHub for a standard install.
 
-You may also clone the git repository and rename the folder to `PageBlocks`.
+## Known Bugs
+
+See GitHub issues page.
 
 ## License
 
