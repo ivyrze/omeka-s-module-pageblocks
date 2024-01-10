@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PageBlocks;
+namespace PageBlocksRM;
 
 use Omeka\Module\AbstractModule;
 use Laminas\EventManager\SharedEventManagerInterface;
-use PageBlocks\Form\TopicsListSidebarForm;
+use PageBlocksRM\Form\TopicsListSidebarForm;
 
 class Module extends AbstractModule
 {

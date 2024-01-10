@@ -1,10 +1,10 @@
 <?php
-namespace PageBlocks\Form;
+namespace PageBlocksRM\Form;
 
 use Laminas\Form\Element;
 use Laminas\Form\Form;
 
-class MediaSingleForm extends Form
+class MediaSingleSquareForm extends Form
 {
     public function init()
     {

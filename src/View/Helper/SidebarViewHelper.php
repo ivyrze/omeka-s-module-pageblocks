@@ -1,5 +1,5 @@
 <?php
-namespace PageBlocks\View\Helper;
+namespace PageBlocksRM\View\Helper;
 
 use Laminas\View\Helper\AbstractHelper;
 

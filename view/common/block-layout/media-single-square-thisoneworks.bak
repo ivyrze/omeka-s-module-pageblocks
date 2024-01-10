@@ -1,0 +1,103 @@
+<?php
+
+$assetUrl = $this->plugin('assetUrl');
+$this->headLink()->appendStylesheet($assetUrl('css/style.css', 'PageBlocks'));
+
+?>
+
+
+<div class="col-container">
+    <div class= "col-first">
+     
+         
+        <?php foreach ($attachments as $attachment) {
+            
+            $item = $attachment->item();
+            $itemjson = $item->jsonSerialize();
+            $mainmed = $attachment->media();
+            $mainmedjson = $mainmed->jsonSerialize();
+            $mi = $itemjson['o:media'];
+           
+            foreach($mi as $cm){
+                $ma = json_decode(json_encode($cm), true);
+                if($ma['o:id'] == $mainmedjson['o:id']){
+                    $mediaRep = $this->api()->read('media', $mainmedjson['o:id']);
+                    $mediaRepC = $mediaRep->getContent();
+                    $med = $mediaRepC->jsonSerialize();
+                    $imageText = '<img src=' . $med['o:original_url'] . '>';
+                }else{
+                    $linkText = '<a href=https://dev.resistancemapping.org/s/m/media/' . $ma['o:id'] . '>';
+                }
+            }
+            
+            echo '<div class="media-render">';
+            echo $linkText;
+            echo $imageText;
+            echo '</a></div>';
+        } ?>
+        
+    </div>
+    <div class = "col-second">
+        <?php foreach ($attachments as $attachment):?>
+        <?php $item = $attachment->item(); ?>
+        <div class"curr-title"  style ="font-size: x-large; font-family: 'Source Sans Pro', sans-serif; color : #0A0A0A; font-weight:bold; padding-bottom: 20px; padding-left :30px">
+            <?php echo $item->displayTitle(); ?>
+        </div>
+        
+        <div class="des">
+            <?php echo $item->displayDescription(); ?>
+        </div>
+        
+        <div class="footer">
+            
+            <!--<?php echo $item->value('dcterms:identifier'); ?>-->
+            <!--<?php echo '<br/>'."<a href=\$item->value('dcterms:identifier') target=\"_blank\" >TEACHER DIRECTIONS</a>"; ?>-->
+          
+            
+            <!--<?php $teacher_directions = $item->value('dcterms:identifier'); ?>-->
+            
+            
+             <?php  $values = $item->value('dcterms:identifier', array('all' => true) ); 
+            
+            
+           
+            //------------------------- New Code Start ----------------
+            
+            
+            
+            foreach ($values as $v) {
+            $ltype = $v -> jsonSerialize();
+           
+            
+            switch ($ltype['o:label']) {
+            case "Teacher Directions":
+                $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Teacher Directions</a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+               
+             break;
+            case "Slide Deck":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Slide Deck</a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+            
+             break;
+            case "Student Handouts":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Student Handouts</a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+            
+             break;
+   
+            }
+                   
+            }
+            
+            //------------------------------Ending------------------------------------
+            
+             ?>
+           
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>

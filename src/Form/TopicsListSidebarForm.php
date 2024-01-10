@@ -1,5 +1,5 @@
 <?php
-namespace PageBlocks\Form;
+namespace PageBlocksRM\Form;
 
 use Laminas\Form\Element;
 use Laminas\Form\Fieldset;

@@ -1,62 +1,3 @@
-.jumbotron-search {
-    max-width: 780px;
-    margin: auto;
-}
-
-.jumbotron-search h1,
-.jumbotron-search p {
-    text-align: center;
-}
-
-.jumbotron-search h1 {
-    margin-bottom: 14px;
-}
-
-.jumbotron-search p {
-    margin: 0 0 36px;
-    opacity: 0.75;
-}
-
-.jumbotron-search form {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-    padding: 2px 6px;
-    background: #FFF;
-    border: 1px solid #CCC;
-    border-radius: 8px;
-}
-
-.jumbotron-search form:focus-within {
-    outline: 5px auto -webkit-focus-ring-color;
-}
-
-.jumbotron-search input,
-.jumbotron-search button {
-    appearance: none;
-    outline: none;
-    background: none;
-    border: none;
-}
-
-.jumbotron-search input[type="text"] {
-    font-size: 24px;
-    height: 52px;
-}
-
-.jumbotron-search button[type="submit"] {
-    color: #000;
-    margin: 0;
-    padding: 0 8px;
-    line-height: 0;
-}
-
-.jumbotron-search button[type="submit"]:before {
-    font-family: "Font Awesome 5 Free";
-    font-size: 24px;
-    line-height: 1em;
-    content: "\f002";
-}
 
 .col-container {
     display: flex;
@@ -65,6 +6,31 @@
     gap: 20px;
 }
 
+.media_copyright {
+    font-size: x-small;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: gray;
+    margin-top: 10px;
+}
+
+.media-render figure img {
+box-shadow: none;
+}
+.media-render figure {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+  }
+.media_description {
+    font-size: 0.7rem;
+    background: white;
+    color: #1A1A1A;
+    padding: 0 15px 20px 15px;
+}
+
+hr { 
+    margin: 2rem; 
+    width:100%;
+    
+}
 
 
 .col-container > .col-first {
@@ -85,8 +51,8 @@
 .col-first img {
     width: 100%;
     background-color: #fff;
-    padding: 6px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 4px 8px 0 rgba(0, 0, 0, 0.05);
 
 }
 

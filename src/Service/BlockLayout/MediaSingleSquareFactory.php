@@ -1,15 +1,15 @@
 <?php
-namespace PageBlocks\Service\BlockLayout;
+namespace PageBlocksRM\Service\BlockLayout;
 
 use Interop\Container\ContainerInterface;
-use PageBlocks\Site\BlockLayout\ThreeColumn;
+use PageBlocksRM\Site\BlockLayout\MediaSingleSquare;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class ThreeColumnFactory implements FactoryInterface
+class MediaSingleSquareFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
     {
-        return new ThreeColumn(
+        return new MediaSingleSquare(
             $services->get('FormElementManager'));
     }
 }

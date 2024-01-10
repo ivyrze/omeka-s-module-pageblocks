@@ -1,5 +1,5 @@
 <?php
-namespace PageBlocks\Site\BlockLayout;
+namespace PageBlocksRM\Site\BlockLayout;
 
 use Omeka\Site\BlockLayout\AbstractBlockLayout;
 use Omeka\Api\Representation\SiteRepresentation;
@@ -7,9 +7,9 @@ use Omeka\Api\Representation\SitePageRepresentation;
 use Omeka\Api\Representation\SitePageBlockRepresentation;
 use Laminas\Form\FormElementManager;
 use Laminas\View\Renderer\PhpRenderer;
-use PageBlocks\Form\JumbotronSearchForm;
+use PageBlocksRM\Form\MediaSingleSquareForm;
 
-class JumbotronSearch extends AbstractBlockLayout
+class MediaSingleSquare extends AbstractBlockLayout
 {
     /**
      * @var FormElementManager
@@ -26,29 +26,34 @@ class JumbotronSearch extends AbstractBlockLayout
     
     public function getLabel()
     {
-        return 'Jumbotron search'; // @translate
+        return 'RM Media Square + single column'; // @translate
     }
 
     public function form(PhpRenderer $view, SiteRepresentation $site,
         SitePageRepresentation $page = null, SitePageBlockRepresentation $block = null
     ) {
-        $form = $this->formElementManager->get(JumbotronSearchForm::class);
+        $form = $this->formElementManager->get(MediaSingleSquareForm::class);
             
         if ($block && $block->data()) {
             $form->setData([
-                'o:block[__blockIndex__][o:data][header]' => $block->dataValue('header'),
-                'o:block[__blockIndex__][o:data][subheader]' => $block->dataValue('subheader')
+                'o:block[__blockIndex__][o:data][html]' => $block->dataValue('html')
             ]);
         }
         
-        return $view->formCollection($form);
+        $html = $view->blockAttachmentsForm($block);
+        $html .= '<a href="#" class="collapse" aria-label="collapse"><h4>' . $view->translate('Content') . '</h4></a>';
+        $html .= '<div class="collapsible">';
+        $html .= $view->formCollection($form);
+        $html .= '</div>';
+        
+        return $html;
     }
 
     public function render(PhpRenderer $view, SitePageBlockRepresentation $block)
     {
-        return $view->partial('common/block-layout/jumbotron-search', [
-            'header' => $block->dataValue('header'),
-            'subheader' => $block->dataValue('subheader')
+        return $view->partial('common/block-layout/media-single-square', [
+            'html' => $block->dataValue('html'),
+            'attachments' => $block->attachments()
         ]);
     }
 }

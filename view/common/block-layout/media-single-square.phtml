@@ -1,0 +1,109 @@
+<?php
+
+$assetUrl = $this->plugin('assetUrl');
+$this->headLink()->appendStylesheet($assetUrl('css/style.css', 'PageBlocksRM'));
+
+?>
+
+   <?php 
+      $count = 0;
+      
+   foreach ($attachments as $attachment){ 
+ echo '<div class="col-container">';
+    echo  '<div class= "col-first">';
+    echo '<div class="item resource">';
+    
+    $item = $attachment->item();
+   
+    if ($item){
+        $media = $attachment->media() ?: $item->primaryMedia();
+        if ($media){
+           
+             echo '<div class="media-render">';
+              
+                echo '<figure>';
+                echo '<img src="' . $media->thumbnailUrl('medium') .  '" />';
+                if ($media->value('dcterms:description')){
+                echo '<figcaption class="media_description">' . $media->value('dcterms:description') . '</figcaption>';
+                };
+                echo '</figure>';
+                echo '<div class="media_copyright">';
+                echo $media->value('dcterms:rights');
+                echo '</div>';
+                
+            echo '</div>';
+           
+        };
+     }; 
+
+    echo '</div></div>';
+ echo '<div class = "col-second">';
+    
+            echo '<div class"curr-title"  style ="font-size: x-large; font-family: \'Source Sans Pro\', sans-serif; color : #0A0A0A; font-weight:bold; padding-bottom: 20px; padding-left :30px">';
+            echo $item->displayTitle(); 
+            echo '</div>';
+            
+            echo '<div class="des">';
+            echo $item->displayDescription(); 
+            echo '<br><br><strong>Download Resources:</strong>';
+            echo '</div>';
+            
+        echo '<div class="footer">';
+            $values = $item->value('dcterms:identifier', array('all' => true) ); 
+          
+            foreach ($values as $v) {
+            $ltype = $v -> jsonSerialize();
+           
+            $compare = strtoupper(trim($ltype['o:label']));
+           
+           
+            #switch ($ltype['o:label']) {
+            switch($compare){
+            case "TEACHER DIRECTIONS":
+                $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Teacher Directions <img src="/files/asset/docx_icon.svg" width="20px"></a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+               
+             break;
+             
+            case "SLIDE DECK":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Slide Deck <img src="/files/asset/pptx_icon_(2019).svg" width="20px"></a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+            
+             break;
+             
+            case "STUDENT HANDOUTS":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Student Handouts <img src="/files/asset/docx_icon.svg" width="20px"></a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+             break;
+             
+              
+            case "ENSLAVEMENT":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Enslavement Lessons</a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+             break;
+             
+             case "CIVIL RIGHTS":
+                 $txt = '<a href=' . $ltype['@id'] . ' target="_blank" class="btn">Civil Rights Lessons</a>';
+                $len = strlen($v);
+                echo ($len > 5) ? $txt : '';
+             break;
+          
+            }
+            }
+            echo '</div>';
+           
+             echo '</div>';
+             
+              echo '</div>';
+             
+             echo ($count < count($attachments)-1) ? '<div class="break opaque"></div>' : '';
+             $count ++;
+    };
+ 
+echo '</div>';     
+        ?>
+   

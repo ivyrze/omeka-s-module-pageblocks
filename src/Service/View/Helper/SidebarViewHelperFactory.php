@@ -1,8 +1,8 @@
 <?php
-namespace PageBlocks\Service\View\Helper;
+namespace PageBlocksRM\Service\View\Helper;
 
 use Interop\Container\ContainerInterface;
-use PageBlocks\View\Helper\SidebarViewHelper;
+use PageBlocksRM\View\Helper\SidebarViewHelper;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class SidebarViewHelperFactory implements FactoryInterface
